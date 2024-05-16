@@ -28,6 +28,7 @@ const PasswordResetForm: React.FC = () => {
         type={"text"}
         id={"email"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, email: e.target.value });
@@ -40,6 +41,7 @@ const PasswordResetForm: React.FC = () => {
         type={"password"}
         id={"newPassword"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, newPassword: e.target.value });
@@ -52,6 +54,7 @@ const PasswordResetForm: React.FC = () => {
         type={"password"}
         id={"confirmPassword"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, confirm_password: e.target.value });

@@ -31,6 +31,7 @@ const LoginForm: React.FC<Props> = () => {
         type={"text"}
         id={"email"}
         labelSpan={"*"}
+        labelClass={"text-white"}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, email: e.target.value });
@@ -43,6 +44,7 @@ const LoginForm: React.FC<Props> = () => {
         type={"password"}
         id={"password"}
         labelSpan={"*"}
+        labelClass={"text-white"}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, password: e.target.value });

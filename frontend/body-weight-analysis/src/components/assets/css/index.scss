@@ -6,12 +6,17 @@
   transition: all ease-in-out 0.2s;
 }
 
+.results-area {
+  transition: all ease-in-out 2s;
+}
+
 button:active {
   transform: scale(90%);
 }
 
 input {
   border: 2px solid white;
+  border-bottom: 3px solid #dd7476;
   &:focus {
     border: 2px solid blue;
   }

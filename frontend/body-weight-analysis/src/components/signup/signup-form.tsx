@@ -30,6 +30,7 @@ const SignupForm = () => {
         type={"text"}
         id={"firstName"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, first_name: e.target.value });
@@ -42,6 +43,7 @@ const SignupForm = () => {
         type={"text"}
         id={"lastName"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, last_name: e.target.value });
@@ -54,6 +56,7 @@ const SignupForm = () => {
         type={"text"}
         id={"email"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, email: e.target.value });
@@ -66,6 +69,7 @@ const SignupForm = () => {
         type={"password"}
         id={"password"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, password: e.target.value });
@@ -78,6 +82,7 @@ const SignupForm = () => {
         type={"password"}
         id={"confirmPassword"}
         labelSpan={"*"}
+        labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
           setUserDetails({ ...userDetails, confirm_password: e.target.value });

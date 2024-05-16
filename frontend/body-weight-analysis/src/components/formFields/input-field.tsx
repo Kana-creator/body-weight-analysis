@@ -6,6 +6,7 @@ interface Props {
   type: string;
   id: string;
   labelSpan: string;
+  labelClass: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => any;
 }
 
@@ -16,10 +17,11 @@ const InputField: React.FC<Props> = ({
   id,
   labelSpan,
   onChange,
+  labelClass,
 }) => {
   return (
     <div className={className}>
-      <label htmlFor={id} className="text-white">
+      <label htmlFor={id} className={labelClass}>
         {label + labelSpan}
       </label>
       <input
