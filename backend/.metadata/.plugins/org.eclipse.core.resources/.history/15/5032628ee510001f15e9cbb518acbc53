@@ -1,0 +1,5 @@
+package com.xak.bodyweightanalysis.configuration;
+
+public class WebConfig {
+
+}

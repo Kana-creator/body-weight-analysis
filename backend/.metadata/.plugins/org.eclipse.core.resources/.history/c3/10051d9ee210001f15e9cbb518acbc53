@@ -1,0 +1,2 @@
+spring.application.name=body-weight-analysis
+server.port = 1001

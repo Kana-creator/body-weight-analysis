@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  transition: all ease-in-out 0.2s;
+}
+
+button:active {
+  transform: scale(90%);
+}
+
+input {
+  border: 2px solid white;
+}
+input:focus {
+  border: 2px solid blue;
+}
+
+input.empty {
+  border: 2px solid red;
+}/*# sourceMappingURL=index.css.map */
