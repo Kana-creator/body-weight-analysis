@@ -7,7 +7,7 @@ const CheckEmptyField = (
 
   if (input.value.length < 1) {
     input.classList.add("empty");
-    small.innerText = `${input.id} is required`;
+    small.innerText = `Required field`;
     setEmpty(true);
   } else {
     input.classList.remove("empty");

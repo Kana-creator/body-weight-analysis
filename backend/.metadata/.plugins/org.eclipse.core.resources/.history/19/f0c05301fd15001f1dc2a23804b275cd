@@ -1,0 +1,9 @@
+package com.xak.bodyweightanalysis.user;
+
+import com.xak.bodyweightanalysis.exception.SuccessMessageException;
+
+public interface UserService {
+
+	void saveUser(User user) throws SuccessMessageException ;
+
+}

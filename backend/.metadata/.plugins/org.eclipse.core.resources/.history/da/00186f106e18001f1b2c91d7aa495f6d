@@ -1,0 +1,31 @@
+package com.xak.bodyweightanalysis.recommedation;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Embeddable
+public class NutritionRecommendation {
+	
+	@Column(nullable=false)
+	private String water;
+	
+	@Column(nullable=false)
+    private String carbohydrates;
+	
+	@Column(nullable=false)
+    private String Proteins;
+	
+	@Column(nullable=false)
+    private String Fats;
+
+}

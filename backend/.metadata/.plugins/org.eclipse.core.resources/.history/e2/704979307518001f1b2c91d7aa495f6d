@@ -1,0 +1,25 @@
+package com.xak.bodyweightanalysis.recommedation;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Embeddable
+public class RoadWork {
+	
+	@Column(nullable=false)
+	private String option;
+	
+	@Column
+    private Integer numberOfTimes;
+	
+	@Column
+    private String intervals;
+}

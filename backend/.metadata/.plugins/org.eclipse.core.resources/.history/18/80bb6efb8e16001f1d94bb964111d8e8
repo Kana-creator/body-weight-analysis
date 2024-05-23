@@ -1,0 +1,20 @@
+package com.xak.bodyweightanalysis.user;
+
+import java.util.List;
+
+import com.xak.bodyweightanalysis.exception.AlreadyExistsException;
+import com.xak.bodyweightanalysis.exception.BlankFieldException;
+import com.xak.bodyweightanalysis.exception.NotFoundException;
+import com.xak.bodyweightanalysis.exception.SuccessMessageException;
+
+public interface UserService {
+
+	void saveUser(User user) 
+			throws SuccessMessageException,
+			AlreadyExistsException, BlankFieldException;
+
+	List<User> fetchUsers() throws NotFoundException;
+
+	void deleteUser(Long userId) throws NotFoundException;
+
+}

@@ -1,0 +1,5 @@
+package com.xak.bodyweightanalysis.mailing;
+
+public class MailController {
+
+}

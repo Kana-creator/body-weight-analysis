@@ -1,0 +1,32 @@
+package com.xak.bodyweightanalysis.exception;
+
+public class NotAuthorisedMessageException {
+	
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public NotAuthorisedMessageException() {
+		super();
+	}
+	
+	public NotAuthorisedMessageException(String message) {
+		super(message);
+	}
+	
+	public NotAuthorisedMessageException(String message, Throwable cause) {
+		super(message, cause);
+	}
+	
+	public NotAuthorisedMessageException(Throwable cause) {
+		super(cause);
+	}
+	
+	public NotAuthorisedMessageException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
+
+}

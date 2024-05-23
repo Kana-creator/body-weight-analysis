@@ -6,7 +6,8 @@ const CheckRecommendation = (
   inputArry: HTMLInputElement[],
   setEmpty: React.Dispatch<React.SetStateAction<boolean>>,
   queryDetails: ClientQueryModel,
-  empty: boolean
+  empty: boolean,
+  handelFetchRecommendation: () => void
 ) => {
   var emptyStatus: boolean = true;
 
@@ -21,7 +22,7 @@ const CheckRecommendation = (
   });
 
   if (!emptyStatus && !empty) {
-    console.log(queryDetails);
+    handelFetchRecommendation();
   } else {
     console.log("SOME EMPTY FIELDS WERE FOUND.");
   }

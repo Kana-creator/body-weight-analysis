@@ -1,0 +1,73 @@
+package com.xak.bodyweightanalysis.user;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.xak.bodyweightanalysis.exception.AlreadyExistsException;
+import com.xak.bodyweightanalysis.exception.BlankFieldException;
+import com.xak.bodyweightanalysis.exception.NotFoundException;
+import com.xak.bodyweightanalysis.exception.SuccessMessageException;
+
+@Service
+public class UserServiceImplementation implements UserService {
+	
+	@Autowired
+	UserRepository userRepository;
+
+	
+	/*
+	 * SAVING NEW USER
+	 */
+	@Override
+	public void saveUser(User user) 
+			throws SuccessMessageException, 
+			AlreadyExistsException, BlankFieldException  {
+		
+		
+		// CHECK IF EMAIL ALREADY TAKEN
+		Optional<User> duplicateUser = 
+				userRepository.findByEmail(user.getEmail());
+		
+		if(duplicateUser.isPresent()) {
+			throw new AlreadyExistsException("Email address '" + duplicateUser.get().getEmail() + "' already taken.");
+			
+		}
+		
+		
+		//CHECK ID ADMIN USER ALREADY ADDED
+		Optional<User> adminUser = userRepository.findByRole(user.getRole());
+		if(adminUser.isPresent() && user.getRole().equals("admin")) {
+			throw new AlreadyExistsException("Admin account already created");
+		}
+		
+		
+		userRepository.save(user);
+		
+		throw new SuccessMessageException("Sign up success.");
+		
+		
+		
+	}
+
+	
+	/*
+	 * FETCHING LIST OF USERS
+	 */
+	@Override
+	public List<User> fetchUsers() throws NotFoundException {
+		// CHECK IF ANY USER EXISTS IN THE DATABASE
+		
+		List<User> users = userRepository.findAll();
+		
+		if(users.isEmpty()) {
+			throw new NotFoundException("No user found");
+		}
+		
+		return users;
+		
+	}
+
+}
