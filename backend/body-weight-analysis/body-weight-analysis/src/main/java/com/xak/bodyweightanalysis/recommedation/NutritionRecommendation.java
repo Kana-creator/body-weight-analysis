@@ -1,43 +1,43 @@
 package com.xak.bodyweightanalysis.recommedation;
 
+import com.xak.bodyweightanalysis.enums.NutritionValues;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Embeddable
 public class NutritionRecommendation {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues water;
 	
-	@Column(nullable=false)
-	private String water;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues carbohydrates;
 	
-	@Column(nullable=false)
-    private String carbohydrates;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues Proteins;
 	
-	@Column(nullable=false)
-    private String Proteins;
-	
-	@Column(nullable=false)
-    private String Fats;	
+	@Enumerated(EnumType.STRING)
+	private NutritionValues Fats;	
 	
 	@Embedded
 	private Vitamins vitamins;	
 	
 	@Embedded
 	private Minerals minerals;
+	
+	@Column(length=10000, nullable=true)
+	private String genaralComment;
 
 }

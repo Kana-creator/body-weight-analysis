@@ -1,7 +1,10 @@
 package com.xak.bodyweightanalysis.recommedation;
 
-import jakarta.persistence.Column;
+import com.xak.bodyweightanalysis.enums.NutritionValues;
+
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,24 +15,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Embeddable
-public class Vitamins {
+public class Vitamins {	
 	
-	@Column(nullable=false)
-	private String vitaminA;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues vitaminA;
 	
-	@Column(nullable=false)
-    private String vitaminB;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues vitaminB;
 	
-	@Column(nullable=false)
-    private String vitaminC;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues vitaminC;
 	
-	@Column(nullable=false)
-    private String vitaminD;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues vitaminD;
 	
-	@Column(nullable=false)
-    private String vitaminE;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues vitaminE;
 	
-	@Column(nullable=false)
-    private String vitaminK;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues vitaminK;
 
 }

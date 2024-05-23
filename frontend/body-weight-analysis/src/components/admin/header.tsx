@@ -26,7 +26,9 @@ const Header: React.FC<Props> = () => {
   return (
     <div className="bg-red-900 p-5 px-20 z-50 flex flex-wrap justify-between items-center fixed w-full text-white">
       <div className="">Logo</div>
-      <div className=""></div>
+      <div className="">
+        <h1>info@bodyweightanalysis.com / 08002839382</h1>
+      </div>
       <div className="">
         <details className="px-3 py-1 min-w-32">
           <summary>

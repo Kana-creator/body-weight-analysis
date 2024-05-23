@@ -29,6 +29,7 @@ const Recommendations: React.FC<Props> = () => {
     setRecommendations([
       {
         id: "1",
+        userId: 1,
         ageLowerLimit: 1,
         ageUpperLimit: 3,
         weight: 23,
@@ -60,21 +61,21 @@ const Recommendations: React.FC<Props> = () => {
 
         fitnessRecommendation: {
           gym: {
-            option: "No",
-            numberOfTimes: 2,
-            intervals: "NA",
+            gymOption: "No",
+            gymNumberOfTimes: 2,
+            gymIntervals: "NA",
           },
 
           yoga: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            yogaOption: "No",
+            yogaNumberOfTimes: 0,
+            yogaIntervals: "NA",
           },
 
           roadWork: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            roadWorkOption: "No",
+            roadWorkNumberOfTimes: 0,
+            roadWorkIntervals: "NA",
           },
         },
 
@@ -83,6 +84,7 @@ const Recommendations: React.FC<Props> = () => {
       },
       {
         id: "2",
+        userId: 1,
         ageLowerLimit: 1,
         ageUpperLimit: 3,
         weight: 23,
@@ -114,129 +116,21 @@ const Recommendations: React.FC<Props> = () => {
 
         fitnessRecommendation: {
           gym: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            gymOption: "No",
+            gymNumberOfTimes: 0,
+            gymIntervals: "NA",
           },
 
           yoga: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            yogaOption: "No",
+            yogaNumberOfTimes: 0,
+            yogaIntervals: "NA",
           },
 
           roadWork: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
-          },
-        },
-
-        generalComment:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel veritatis expedita rem possimus autem? Facere, corporis praesentium! Inventore sit quidem neque deleniti dignissimos, facere culpa porro tempore asperiores corporis. Beatae deserunt non error repudiandae officia nulla exercitationem ipsum, inventore corporis quaerat molestiae quibusdam dolores. Exercitationem est asperiores nostrum deserunt. Voluptas eveniet doloremque autem excepturi nostrum delectus atque, amet deleniti provident pariatur nesciunt. Itaque perferendis, aliquid voluptates illum rerum, ex sit aspernatur est quas sunt iure corrupti exercitationem deserunt dolore voluptate labore unde? Nobis, nesciunt harum voluptatem quaerat odio doloribus impedit dolor ducimus ipsum neque velit, nihil ipsam reiciendis molestiae sit ea! Ipsa tempora pariatur libero facere porro ducimus expedita voluptatum nostrum repudiandae optio exercitationem veritatis aliquam et debitis, cum vitae culpa animi eum quia ipsum! Odio doloribus voluptatibus alias at enim quam omnis rerum quis consequatur, impedit mollitia quo fugit nihil tempore. Delectus modi laudantium, ducimus reiciendis dolorum fuga voluptatibus ex alias beatae voluptate odit illo ab totam, voluptatem fugit earum exercitationem iusto perspiciatis velit omnis voluptatum nam porro corrupti. Aperiam totam nobis velit omnis asperiores? Dolores ratione ipsum, veritatis dignissimos, soluta asperiores adipisci maxime maiores quasi atque laudantium pariatur explicabo praesentium ipsa ea omnis voluptate unde voluptates vitae cumque perferendis est eos quis alias. Eveniet veritatis perferendis fuga ipsum itaque dolores ratione reprehenderit odio, repellat blanditiis alias in! Recusandae fuga tenetur libero mollitia a, temporibus fugit officiis maiores quo quas itaque praesentium modi dolore excepturi ea aut sapiente optio non alias deserunt animi perspiciatis provident cum repellendus? Dignissimos, saepe aut voluptate sit molestiae molestias quibusdam. Ea, maxime eius. Totam officia et eum aperiam reiciendis fuga consequatur ipsum iusto voluptate culpa nobis repellendus exercitationem, tempora maiores deserunt animi ipsa! Temporibus mollitia ratione neque velit dignissimos beatae repellat unde, dolorum enim architecto aspernatur aut incidunt, commodi corrupti illo. Commodi, officia ipsa.",
-      },
-      {
-        id: "3",
-        ageLowerLimit: 3,
-        ageUpperLimit: 7,
-        weight: 23,
-        height: 130,
-
-        nutritionRecommendation: {
-          water: "moderate",
-          carbohydrates: "very low",
-          Proteins: "high",
-          Fats: "Low",
-
-          vitamins: {
-            vitaminA: "Moderate",
-            vitaminB: "very high",
-            vitaminC: "low",
-            vitaminD: "very low",
-            vitaminE: "high",
-            vitaminK: "very high",
-          },
-
-          minerals: {
-            calcium: "moderate",
-            potacium: "low",
-            iron: "modorate",
-            magnezium: "very low",
-            zinc: "No",
-          },
-        },
-
-        fitnessRecommendation: {
-          gym: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
-          },
-
-          yoga: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
-          },
-
-          roadWork: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
-          },
-        },
-
-        generalComment:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel veritatis expedita rem possimus autem? Facere, corporis praesentium! Inventore sit quidem neque deleniti dignissimos, facere culpa porro tempore asperiores corporis. Beatae deserunt non error repudiandae officia nulla exercitationem ipsum, inventore corporis quaerat molestiae quibusdam dolores. Exercitationem est asperiores nostrum deserunt. Voluptas eveniet doloremque autem excepturi nostrum delectus atque, amet deleniti provident pariatur nesciunt. Itaque perferendis, aliquid voluptates illum rerum, ex sit aspernatur est quas sunt iure corrupti exercitationem deserunt dolore voluptate labore unde? Nobis, nesciunt harum voluptatem quaerat odio doloribus impedit dolor ducimus ipsum neque velit, nihil ipsam reiciendis molestiae sit ea! Ipsa tempora pariatur libero facere porro ducimus expedita voluptatum nostrum repudiandae optio exercitationem veritatis aliquam et debitis, cum vitae culpa animi eum quia ipsum! Odio doloribus voluptatibus alias at enim quam omnis rerum quis consequatur, impedit mollitia quo fugit nihil tempore. Delectus modi laudantium, ducimus reiciendis dolorum fuga voluptatibus ex alias beatae voluptate odit illo ab totam, voluptatem fugit earum exercitationem iusto perspiciatis velit omnis voluptatum nam porro corrupti. Aperiam totam nobis velit omnis asperiores? Dolores ratione ipsum, veritatis dignissimos, soluta asperiores adipisci maxime maiores quasi atque laudantium pariatur explicabo praesentium ipsa ea omnis voluptate unde voluptates vitae cumque perferendis est eos quis alias. Eveniet veritatis perferendis fuga ipsum itaque dolores ratione reprehenderit odio, repellat blanditiis alias in! Recusandae fuga tenetur libero mollitia a, temporibus fugit officiis maiores quo quas itaque praesentium modi dolore excepturi ea aut sapiente optio non alias deserunt animi perspiciatis provident cum repellendus? Dignissimos, saepe aut voluptate sit molestiae molestias quibusdam. Ea, maxime eius. Totam officia et eum aperiam reiciendis fuga consequatur ipsum iusto voluptate culpa nobis repellendus exercitationem, tempora maiores deserunt animi ipsa! Temporibus mollitia ratione neque velit dignissimos beatae repellat unde, dolorum enim architecto aspernatur aut incidunt, commodi corrupti illo. Commodi, officia ipsa.",
-      },
-      {
-        id: "4",
-        ageLowerLimit: 1,
-        ageUpperLimit: 3,
-        weight: 23,
-        height: 130,
-
-        nutritionRecommendation: {
-          water: "moderate",
-          carbohydrates: "very low",
-          Proteins: "high",
-          Fats: "Low",
-
-          vitamins: {
-            vitaminA: "Moderate",
-            vitaminB: "very high",
-            vitaminC: "low",
-            vitaminD: "very low",
-            vitaminE: "high",
-            vitaminK: "very high",
-          },
-
-          minerals: {
-            calcium: "moderate",
-            potacium: "low",
-            iron: "modorate",
-            magnezium: "very low",
-            zinc: "No",
-          },
-        },
-
-        fitnessRecommendation: {
-          gym: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
-          },
-
-          yoga: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
-          },
-
-          roadWork: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            roadWorkOption: "No",
+            roadWorkNumberOfTimes: 0,
+            roadWorkIntervals: "NA",
           },
         },
 
@@ -450,20 +344,23 @@ const Recommendations: React.FC<Props> = () => {
                     <p>
                       <b>Recommended: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.gym.option}
+                        {recommendation.fitnessRecommendation.gym.gymOption}
                       </span>
                     </p>
                     <p>
                       <b>Number of times: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.gym.numberOfTimes}
+                        {
+                          recommendation.fitnessRecommendation.gym
+                            .gymNumberOfTimes
+                        }
                       </span>
                     </p>
 
                     <p>
                       <b>Intervals: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.gym.intervals}
+                        {recommendation.fitnessRecommendation.gym.gymIntervals}
                       </span>
                     </p>
                   </div>
@@ -475,7 +372,7 @@ const Recommendations: React.FC<Props> = () => {
                     <p>
                       <b>Recommended: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.yoga.option}
+                        {recommendation.fitnessRecommendation.yoga.yogaOption}
                       </span>
                     </p>
                     <p>
@@ -483,7 +380,7 @@ const Recommendations: React.FC<Props> = () => {
                       <span>
                         {
                           recommendation.fitnessRecommendation.yoga
-                            .numberOfTimes
+                            .yogaNumberOfTimes
                         }
                       </span>
                     </p>
@@ -491,7 +388,10 @@ const Recommendations: React.FC<Props> = () => {
                     <p>
                       <b>Intervals: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.yoga.intervals}
+                        {
+                          recommendation.fitnessRecommendation.yoga
+                            .yogaIntervals
+                        }
                       </span>
                     </p>
                   </div>
@@ -503,7 +403,10 @@ const Recommendations: React.FC<Props> = () => {
                     <p>
                       <b>Recommended: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.roadWork.option}
+                        {
+                          recommendation.fitnessRecommendation.roadWork
+                            .roadWorkOption
+                        }
                       </span>
                     </p>
                     <p>
@@ -511,7 +414,7 @@ const Recommendations: React.FC<Props> = () => {
                       <span>
                         {
                           recommendation.fitnessRecommendation.roadWork
-                            .numberOfTimes
+                            .roadWorkNumberOfTimes
                         }
                       </span>
                     </p>
@@ -521,7 +424,7 @@ const Recommendations: React.FC<Props> = () => {
                       <span>
                         {
                           recommendation.fitnessRecommendation.roadWork
-                            .intervals
+                            .roadWorkIntervals
                         }
                       </span>
                     </p>

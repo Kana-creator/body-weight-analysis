@@ -16,6 +16,7 @@ const RecommendationForm: React.FC<Props> = ({
   const [update, setUpdate] = useState<boolean>(false);
   const [recommendation, setRecommendation] = useState<RecommendationModel>({
     id: "",
+    userId: 0,
     ageLowerLimit: 0,
     ageUpperLimit: 0,
     weight: 0,
@@ -47,21 +48,21 @@ const RecommendationForm: React.FC<Props> = ({
 
     fitnessRecommendation: {
       gym: {
-        option: "",
-        numberOfTimes: 0,
-        intervals: "",
+        gymOption: "",
+        gymNumberOfTimes: 0,
+        gymIntervals: "",
       },
 
       yoga: {
-        option: "",
-        numberOfTimes: 0,
-        intervals: "",
+        yogaOption: "",
+        yogaNumberOfTimes: 0,
+        yogaIntervals: "",
       },
 
       roadWork: {
-        option: "",
-        numberOfTimes: 0,
-        intervals: "",
+        roadWorkOption: "",
+        roadWorkNumberOfTimes: 0,
+        roadWorkIntervals: "",
       },
     },
 
@@ -841,7 +842,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         gym: {
                           ...recommendation.fitnessRecommendation.gym,
-                          option: e.target.value,
+                          gymOption: e.target.value,
                         },
                       },
                     });
@@ -851,9 +852,9 @@ const RecommendationForm: React.FC<Props> = ({
                     <option value="">SELECT OPTION</option>
                   ) : (
                     <option
-                      value={recommendation.fitnessRecommendation.gym.option}
+                      value={recommendation.fitnessRecommendation.gym.gymOption}
                     >
-                      {recommendation.fitnessRecommendation.gym.option}
+                      {recommendation.fitnessRecommendation.gym.gymOption}
                     </option>
                   )}
                   <option value="no">No</option>
@@ -873,7 +874,8 @@ const RecommendationForm: React.FC<Props> = ({
                   defaultValue={
                     !id
                       ? ""
-                      : editableRecom[0].fitnessRecommendation.gym.numberOfTimes
+                      : editableRecom[0].fitnessRecommendation.gym
+                          .gymNumberOfTimes
                   }
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setRecommendation({
@@ -882,7 +884,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         gym: {
                           ...recommendation.fitnessRecommendation.gym,
-                          numberOfTimes: Number(e.target.value),
+                          gymNumberOfTimes: Number(e.target.value),
                         },
                       },
                     })
@@ -905,7 +907,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         gym: {
                           ...recommendation.fitnessRecommendation.gym,
-                          intervals: e.target.value,
+                          gymIntervals: e.target.value,
                         },
                       },
                     });
@@ -915,9 +917,11 @@ const RecommendationForm: React.FC<Props> = ({
                     <option value="">SELECT OPTION</option>
                   ) : (
                     <option
-                      value={recommendation.fitnessRecommendation.gym.intervals}
+                      value={
+                        recommendation.fitnessRecommendation.gym.gymIntervals
+                      }
                     >
-                      {recommendation.fitnessRecommendation.gym.intervals}
+                      {recommendation.fitnessRecommendation.gym.gymIntervals}
                     </option>
                   )}
                   <option value="annually">Annually</option>
@@ -947,7 +951,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         yoga: {
                           ...recommendation.fitnessRecommendation.yoga,
-                          option: e.target.value,
+                          yogaOption: e.target.value,
                         },
                       },
                     });
@@ -957,9 +961,11 @@ const RecommendationForm: React.FC<Props> = ({
                     <option value="">SELECT OPTION</option>
                   ) : (
                     <option
-                      value={recommendation.fitnessRecommendation.yoga.option}
+                      value={
+                        recommendation.fitnessRecommendation.yoga.yogaOption
+                      }
                     >
-                      {recommendation.fitnessRecommendation.yoga.option}
+                      {recommendation.fitnessRecommendation.yoga.yogaOption}
                     </option>
                   )}
                   <option value="no">No</option>
@@ -980,7 +986,7 @@ const RecommendationForm: React.FC<Props> = ({
                     !id
                       ? ""
                       : editableRecom[0].fitnessRecommendation.yoga
-                          .numberOfTimes
+                          .yogaNumberOfTimes
                   }
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setRecommendation({
@@ -989,7 +995,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         yoga: {
                           ...recommendation.fitnessRecommendation.yoga,
-                          numberOfTimes: Number(e.target.value),
+                          yogaNumberOfTimes: Number(e.target.value),
                         },
                       },
                     })
@@ -1012,7 +1018,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         yoga: {
                           ...recommendation.fitnessRecommendation.yoga,
-                          intervals: e.target.value,
+                          yogaIntervals: e.target.value,
                         },
                       },
                     })
@@ -1023,10 +1029,10 @@ const RecommendationForm: React.FC<Props> = ({
                   ) : (
                     <option
                       value={
-                        recommendation.fitnessRecommendation.yoga.intervals
+                        recommendation.fitnessRecommendation.yoga.yogaIntervals
                       }
                     >
-                      {recommendation.fitnessRecommendation.yoga.intervals}
+                      {recommendation.fitnessRecommendation.yoga.yogaIntervals}
                     </option>
                   )}
                   <option value="annually">Annually</option>
@@ -1056,7 +1062,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         roadWork: {
                           ...recommendation.fitnessRecommendation.roadWork,
-                          option: e.target.value,
+                          roadWorkOption: e.target.value,
                         },
                       },
                     });
@@ -1067,10 +1073,14 @@ const RecommendationForm: React.FC<Props> = ({
                   ) : (
                     <option
                       value={
-                        recommendation.fitnessRecommendation.roadWork.option
+                        recommendation.fitnessRecommendation.roadWork
+                          .roadWorkOption
                       }
                     >
-                      {recommendation.fitnessRecommendation.roadWork.option}
+                      {
+                        recommendation.fitnessRecommendation.roadWork
+                          .roadWorkOption
+                      }
                     </option>
                   )}
                   <option value="no">No</option>
@@ -1091,7 +1101,7 @@ const RecommendationForm: React.FC<Props> = ({
                     !id
                       ? ""
                       : editableRecom[0].fitnessRecommendation.roadWork
-                          .numberOfTimes
+                          .roadWorkNumberOfTimes
                   }
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setRecommendation({
@@ -1100,7 +1110,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         roadWork: {
                           ...recommendation.fitnessRecommendation.roadWork,
-                          numberOfTimes: Number(e.target.value),
+                          roadWorkNumberOfTimes: Number(e.target.value),
                         },
                       },
                     })
@@ -1123,7 +1133,7 @@ const RecommendationForm: React.FC<Props> = ({
                         ...recommendation.fitnessRecommendation,
                         roadWork: {
                           ...recommendation.fitnessRecommendation.roadWork,
-                          intervals: e.target.value,
+                          roadWorkIntervals: e.target.value,
                         },
                       },
                     })
@@ -1134,10 +1144,14 @@ const RecommendationForm: React.FC<Props> = ({
                   ) : (
                     <option
                       value={
-                        recommendation.fitnessRecommendation.roadWork.intervals
+                        recommendation.fitnessRecommendation.roadWork
+                          .roadWorkIntervals
                       }
                     >
-                      {recommendation.fitnessRecommendation.roadWork.intervals}
+                      {
+                        recommendation.fitnessRecommendation.roadWork
+                          .roadWorkIntervals
+                      }
                     </option>
                   )}
                   <option value="annually">Annually</option>

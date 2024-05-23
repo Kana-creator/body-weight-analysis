@@ -1,25 +1,29 @@
 package com.xak.bodyweightanalysis.recommedation;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FitnessRecommendation {	
+@Embeddable
+public class FitnessRecommendation {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id;
+	@Embedded
+	private Gym gym;
+	
+	@Embedded
+	private Yoga yoga;
+	
+	
+	@Embedded
+	private RoadWork roadWork;
+	
 	
 
 }

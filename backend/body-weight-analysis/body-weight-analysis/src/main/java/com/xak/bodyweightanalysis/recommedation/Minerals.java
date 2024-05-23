@@ -1,7 +1,10 @@
 package com.xak.bodyweightanalysis.recommedation;
 
-import jakarta.persistence.Column;
+import com.xak.bodyweightanalysis.enums.NutritionValues;
+
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,19 +17,19 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class Minerals {
 	
-	@Column(nullable=false)
-	private String calcium;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues calcium;
 	
-	@Column(nullable=false)
-    private String potacium;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues potacium;
 	
-	@Column(nullable=false)
-    private String iron;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues iron;
 	
-	@Column(nullable=false)
-    private String magnezium;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues magnezium;
 	
-	@Column(nullable=false)
-    private String zinc;
+	@Enumerated(EnumType.STRING)
+	private NutritionValues zinc;
 
 }

@@ -1,14 +1,11 @@
 package com.xak.bodyweightanalysis.recommedation;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
+import com.xak.bodyweightanalysis.enums.FitnessIntervals;
+import com.xak.bodyweightanalysis.enums.FitnessOptions;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,28 +13,20 @@ import lombok.NoArgsConstructor;
 
 
 
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Embeddable
 public class Gym {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id;
-	
-	@Column(nullable=false)
-	private String options;
+	@Enumerated(EnumType.STRING)
+	private FitnessOptions gymOptions;
 	
 	@Column
-    private Integer numberOfTimes;
+    private Integer gymNumberOfTimes;
 	
-	@Column
-    private String intervals;
-	
-	@OneToOne
-	@JoinColumn(name="fitness_id", referencedColumnName="Id", nullable=false)
-//	@JsonBackReference
-	private FitnessRecommendation fitnessRecommendation;
+	@Enumerated(EnumType.STRING)
+	private FitnessIntervals gymIntervals;
 }

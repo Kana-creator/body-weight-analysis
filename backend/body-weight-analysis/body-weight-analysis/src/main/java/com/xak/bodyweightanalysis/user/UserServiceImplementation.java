@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xak.bodyweightanalysis.enums.UserRole;
 import com.xak.bodyweightanalysis.exception.AlreadyExistsException;
 import com.xak.bodyweightanalysis.exception.BlankFieldException;
 import com.xak.bodyweightanalysis.exception.NotAuthorisedException;
@@ -43,7 +44,8 @@ public class UserServiceImplementation implements UserService {
 		
 		//CHECK ID ADMIN USER ALREADY ADDED
 		Optional<User> adminUser = userRepository.findByRole(user.getRole());
-		if(adminUser.isPresent() && user.getRole().equals("admin")) {
+		System.out.println(user.getRole());
+		if(adminUser.isPresent() && user.getRole() == UserRole.admin) {
 			throw new AlreadyExistsException("Admin account already created");
 		}		
 		
@@ -120,6 +122,10 @@ public class UserServiceImplementation implements UserService {
 
 
 
+	
+	/*
+	 * ADMIN LOGIN
+	 */
 	@Override
 	@Transactional
 	public User adminLogin(LoginModel loginModel) throws NotFoundException, SuccessMessageException {
@@ -135,7 +141,7 @@ public class UserServiceImplementation implements UserService {
 		}		
 		
 		//CHECK IF THE USER IS ADMIN
-		if(!user.get().getRole().equals("admin")) {
+		if(!user.get().getRole().equals(UserRole.admin)) {
 			throw new NotFoundException("Incorrect email or password");
 		}
 		

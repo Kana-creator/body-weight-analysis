@@ -5,8 +5,13 @@ import java.sql.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.xak.bodyweightanalysis.enums.NutritionValues;
+import com.xak.bodyweightanalysis.enums.UserRole;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,8 +31,8 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long userId;
 	
-	@Column(nullable=false)
-	private String role;
+	@Enumerated(EnumType.STRING)
+	private UserRole role;
 	
 	@Column(nullable=false)
 	private String firstName;
@@ -39,16 +44,13 @@ public class User {
 	private String email;
 	
 	@Column(nullable=false)
-	private String password;
-	
+	private String password;	
 	
 	@CreationTimestamp
 	@Column(updatable=false)
 	private Timestamp dateCreated;
 	
 	@UpdateTimestamp
-	private Timestamp lastUpdated;
-	
-	
+	private Timestamp lastUpdated;	
 
 }

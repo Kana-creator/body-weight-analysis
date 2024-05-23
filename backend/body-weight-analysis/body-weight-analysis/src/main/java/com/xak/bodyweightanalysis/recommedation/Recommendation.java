@@ -1,15 +1,20 @@
 package com.xak.bodyweightanalysis.recommedation;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.sql.Timestamp;
 
-import jakarta.persistence.CascadeType;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.xak.bodyweightanalysis.user.User;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,18 +41,23 @@ public class Recommendation {
 	private Integer weight;
 	
 	@Column(nullable=false)
-	private Integer height;
+	private Integer height;	
 	
+	@Embedded
+	private NutritionRecommendation nutritionRecomendation;	
 	
-	@OneToOne(cascade=CascadeType.REMOVE)
-	@JoinColumn(name="nutrition_id", referencedColumnName="id")
-	@JsonManagedReference
-	private NutritionRecommendation nutritionRecomendation;
+	@Embedded
+	private FitnessRecommendation  fitnessRecommendation ;	
 	
+	@CreationTimestamp
+	@Column(updatable=false)
+	private Timestamp dateCreated;
 	
-	@OneToOne(cascade=CascadeType.REMOVE)
-	@JoinColumn(name="recommendation_id", referencedColumnName="id")
-	@JsonManagedReference
-	private FitnessRecommendation  fitnessRecommendation ;
+	@UpdateTimestamp
+	private Timestamp lastUpdated;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id", referencedColumnName="userId")
+	private User user;
 
 }

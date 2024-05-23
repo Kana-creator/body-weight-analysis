@@ -25,6 +25,7 @@ const ClientPage: React.FC<Props> = () => {
   const handleFetchRecommendation = () => {
     setRecommendations([
       {
+        userId: 1,
         ageLowerLimit: 1,
         ageUpperLimit: 3,
         weight: 23,
@@ -56,21 +57,21 @@ const ClientPage: React.FC<Props> = () => {
 
         fitnessRecommendation: {
           gym: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            gymOption: "No",
+            gymNumberOfTimes: 0,
+            gymIntervals: "NA",
           },
 
           yoga: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            yogaOption: "No",
+            yogaNumberOfTimes: 0,
+            yogaIntervals: "NA",
           },
 
           roadWork: {
-            option: "No",
-            numberOfTimes: 0,
-            intervals: "NA",
+            roadWorkOption: "No",
+            roadWorkNumberOfTimes: 0,
+            roadWorkIntervals: "NA",
           },
         },
 
@@ -348,20 +349,23 @@ const ClientPage: React.FC<Props> = () => {
                     <p>
                       <b>Recommended: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.gym.option}
+                        {recommendation.fitnessRecommendation.gym.gymOption}
                       </span>
                     </p>
                     <p>
                       <b>Number of times: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.gym.numberOfTimes}
+                        {
+                          recommendation.fitnessRecommendation.gym
+                            .gymNumberOfTimes
+                        }
                       </span>
                     </p>
 
                     <p>
                       <b>Intervals: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.gym.intervals}
+                        {recommendation.fitnessRecommendation.gym.gymIntervals}
                       </span>
                     </p>
                   </div>
@@ -373,7 +377,7 @@ const ClientPage: React.FC<Props> = () => {
                     <p>
                       <b>Recommended: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.yoga.option}
+                        {recommendation.fitnessRecommendation.yoga.yogaOption}
                       </span>
                     </p>
                     <p>
@@ -381,7 +385,7 @@ const ClientPage: React.FC<Props> = () => {
                       <span>
                         {
                           recommendation.fitnessRecommendation.yoga
-                            .numberOfTimes
+                            .yogaNumberOfTimes
                         }
                       </span>
                     </p>
@@ -389,7 +393,10 @@ const ClientPage: React.FC<Props> = () => {
                     <p>
                       <b>Intervals: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.yoga.intervals}
+                        {
+                          recommendation.fitnessRecommendation.yoga
+                            .yogaIntervals
+                        }
                       </span>
                     </p>
                   </div>
@@ -401,7 +408,10 @@ const ClientPage: React.FC<Props> = () => {
                     <p>
                       <b>Recommended: </b>
                       <span>
-                        {recommendation.fitnessRecommendation.roadWork.option}
+                        {
+                          recommendation.fitnessRecommendation.roadWork
+                            .roadWorkOption
+                        }
                       </span>
                     </p>
                     <p>
@@ -409,7 +419,7 @@ const ClientPage: React.FC<Props> = () => {
                       <span>
                         {
                           recommendation.fitnessRecommendation.roadWork
-                            .numberOfTimes
+                            .roadWorkNumberOfTimes
                         }
                       </span>
                     </p>
@@ -419,7 +429,7 @@ const ClientPage: React.FC<Props> = () => {
                       <span>
                         {
                           recommendation.fitnessRecommendation.roadWork
-                            .intervals
+                            .roadWorkIntervals
                         }
                       </span>
                     </p>

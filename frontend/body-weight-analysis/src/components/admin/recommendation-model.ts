@@ -1,5 +1,6 @@
 export interface RecommendationModel {
   id?: string;
+  userId: number;
   ageLowerLimit: number;
   ageUpperLimit: number;
   weight: number;
@@ -31,21 +32,21 @@ export interface RecommendationModel {
 
   fitnessRecommendation: {
     gym: {
-      option: string;
-      numberOfTimes: number;
-      intervals: string;
+      gymOption: string;
+      gymNumberOfTimes: number;
+      gymIntervals: string;
     };
 
     yoga: {
-      option: string;
-      numberOfTimes: number;
-      intervals: string;
+      yogaOption: string;
+      yogaNumberOfTimes: number;
+      yogaIntervals: string;
     };
 
     roadWork: {
-      option: string;
-      numberOfTimes: number;
-      intervals: string;
+      roadWorkOption: string;
+      roadWorkNumberOfTimes: number;
+      roadWorkIntervals: string;
     };
   };
 
