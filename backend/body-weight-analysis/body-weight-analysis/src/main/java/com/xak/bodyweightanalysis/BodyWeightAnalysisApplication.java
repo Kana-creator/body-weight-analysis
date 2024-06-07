@@ -8,6 +8,8 @@ public class BodyWeightAnalysisApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BodyWeightAnalysisApplication.class, args);
+		
+		System.out.println("WELCOME TO BODY WEIGHT ANALYSIS");
 	}
 
 }

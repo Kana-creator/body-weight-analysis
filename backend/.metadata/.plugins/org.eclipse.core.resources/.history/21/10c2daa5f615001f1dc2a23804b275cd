@@ -1,5 +1,0 @@
-package com.xak.bodyweightanalysis.user;
-
-public interface UserRepository {
-
-}

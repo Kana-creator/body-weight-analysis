@@ -1,5 +1,0 @@
-package com.xak.bodyweightanalysis.exception;
-
-public class NotAuthorisedMessageException {
-
-}

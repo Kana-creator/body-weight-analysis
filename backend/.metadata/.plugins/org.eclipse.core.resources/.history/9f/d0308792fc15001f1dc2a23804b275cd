@@ -1,7 +1,0 @@
-package com.xak.bodyweightanalysis.user;
-
-public interface UserService {
-
-	void saveUser(User user);
-
-}

@@ -12,8 +12,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Gym {
 	
 	@Enumerated(EnumType.STRING)
-	private FitnessOptions gymOptions;
+	private FitnessOptions gymOption;
 	
 	@Column
     private Integer gymNumberOfTimes;
