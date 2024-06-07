@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.xak.bodyweightanalysis.enums.NutritionValues;
 import com.xak.bodyweightanalysis.enums.UserRole;
 
 import jakarta.persistence.Column;

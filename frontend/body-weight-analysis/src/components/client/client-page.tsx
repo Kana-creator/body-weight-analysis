@@ -4,8 +4,9 @@ import CheckEmptyField from "../globleActions/check-empty-fields";
 import ClientQueryModel from "./query-model";
 import CheckRecommendation from "./check-recomentation";
 import Header from "../admin/header";
-import { RecommendationModel } from "../admin/recommendation-model";
+import { RecommendationModel } from "../admin/recommendation/recommendation-model";
 import Footer from "./footer";
+import axios from "axios";
 // import { UserModel } from "../admin/user-model";
 
 interface Props {}
@@ -23,62 +24,25 @@ const ClientPage: React.FC<Props> = () => {
   );
 
   const handleFetchRecommendation = () => {
-    setRecommendations([
-      {
-        userId: 1,
-        ageLowerLimit: 1,
-        ageUpperLimit: 3,
-        weight: 23,
-        height: 130,
+    axios.interceptors.response.use(
+      (response) => response,
+      (error) => error.response
+    );
 
-        nutritionRecommendation: {
-          water: "moderate",
-          carbohydrates: "very low",
-          Proteins: "high",
-          Fats: "Low",
-
-          vitamins: {
-            vitaminA: "Moderate",
-            vitaminB: "very high",
-            vitaminC: "low",
-            vitaminD: "very low",
-            vitaminE: "high",
-            vitaminK: "very high",
-          },
-
-          minerals: {
-            calcium: "moderate",
-            potacium: "low",
-            iron: "modorate",
-            magnezium: "very low",
-            zinc: "No",
-          },
-        },
-
-        fitnessRecommendation: {
-          gym: {
-            gymOption: "No",
-            gymNumberOfTimes: 0,
-            gymIntervals: "NA",
-          },
-
-          yoga: {
-            yogaOption: "No",
-            yogaNumberOfTimes: 0,
-            yogaIntervals: "NA",
-          },
-
-          roadWork: {
-            roadWorkOption: "No",
-            roadWorkNumberOfTimes: 0,
-            roadWorkIntervals: "NA",
-          },
-        },
-
-        generalComment:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel veritatis expedita rem possimus autem? Facere, corporis praesentium! Inventore sit quidem neque deleniti dignissimos, facere culpa porro tempore asperiores corporis. Beatae deserunt non error repudiandae officia nulla exercitationem ipsum, inventore corporis quaerat molestiae quibusdam dolores. Exercitationem est asperiores nostrum deserunt. Voluptas eveniet doloremque autem excepturi nostrum delectus atque, amet deleniti provident pariatur nesciunt. Itaque perferendis, aliquid voluptates illum rerum, ex sit aspernatur est quas sunt iure corrupti exercitationem deserunt dolore voluptate labore unde? Nobis, nesciunt harum voluptatem quaerat odio doloribus impedit dolor ducimus ipsum neque velit, nihil ipsam reiciendis molestiae sit ea! Ipsa tempora pariatur libero facere porro ducimus expedita voluptatum nostrum repudiandae optio exercitationem veritatis aliquam et debitis, cum vitae culpa animi eum quia ipsum! Odio doloribus voluptatibus alias at enim quam omnis rerum quis consequatur, impedit mollitia quo fugit nihil tempore. Delectus modi laudantium, ducimus reiciendis dolorum fuga voluptatibus ex alias beatae voluptate odit illo ab totam, voluptatem fugit earum exercitationem iusto perspiciatis velit omnis voluptatum nam porro corrupti. Aperiam totam nobis velit omnis asperiores? Dolores ratione ipsum, veritatis dignissimos, soluta asperiores adipisci maxime maiores quasi atque laudantium pariatur explicabo praesentium ipsa ea omnis voluptate unde voluptates vitae cumque perferendis est eos quis alias. Eveniet veritatis perferendis fuga ipsum itaque dolores ratione reprehenderit odio, repellat blanditiis alias in! Recusandae fuga tenetur libero mollitia a, temporibus fugit officiis maiores quo quas itaque praesentium modi dolore excepturi ea aut sapiente optio non alias deserunt animi perspiciatis provident cum repellendus? Dignissimos, saepe aut voluptate sit molestiae molestias quibusdam. Ea, maxime eius. Totam officia et eum aperiam reiciendis fuga consequatur ipsum iusto voluptate culpa nobis repellendus exercitationem, tempora maiores deserunt animi ipsa! Temporibus mollitia ratione neque velit dignissimos beatae repellat unde, dolorum enim architecto aspernatur aut incidunt, commodi corrupti illo. Commodi, officia ipsa.",
-      },
-    ]);
+    axios
+      .get(
+        `${process.env.REACT_APP_API_URL}/api/fetch-recommendation/${clientQuery.age}/${clientQuery.weight}/${clientQuery.height}`
+      )
+      .then((res) => {
+        if (res.data.status && res.data.status !== "OK") {
+          console.log(res.data);
+          window.alert(res.data.message);
+        } else {
+          console.log(res.data);
+          setRecommendations([res.data]);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   // const [currentUser, setCurrentUser] = useState<UserModel[]>([]);
@@ -215,13 +179,13 @@ const ClientPage: React.FC<Props> = () => {
                     <p>
                       <b>Proteins: </b>
                       <span>
-                        {recommendation.nutritionRecommendation.Proteins}
+                        {recommendation.nutritionRecommendation.proteins}
                       </span>
                     </p>
 
                     <p>
                       <b>Fats: </b>
-                      <span>{recommendation.nutritionRecommendation.Fats}</span>
+                      <span>{recommendation.nutritionRecommendation.fats}</span>
                     </p>
                   </div>
 

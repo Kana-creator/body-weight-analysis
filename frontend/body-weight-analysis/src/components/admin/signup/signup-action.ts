@@ -47,8 +47,7 @@ const SignupAction = (
                 "user",
                 `${JSON.stringify({ ...userDetails })}`
               );
-
-              navigate("/dashboard");
+              navigate("/admin");
             }
           } else {
             setMessage("Sign up failed please contact support.");

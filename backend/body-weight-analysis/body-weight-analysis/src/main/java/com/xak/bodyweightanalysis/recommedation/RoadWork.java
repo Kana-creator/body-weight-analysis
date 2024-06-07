@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class RoadWork {
 	
 	@Enumerated(EnumType.STRING)
-	private FitnessOptions roadWorkOptions;
+	private FitnessOptions roadWorkOption;
 	
 	@Column
     private Integer roadWorkNumberOfTimes;

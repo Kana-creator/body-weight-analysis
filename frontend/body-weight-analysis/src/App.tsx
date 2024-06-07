@@ -6,7 +6,7 @@ import PasswordResetPage from "./components/client/passwordReset/password-reset-
 import ClientPage from "./components/client/client-page";
 import Dashboard from "./components/admin/dashboard";
 import UsersList from "./components/admin/users-list";
-import RecommendationsList from "./components/admin/recommendations-list";
+import RecommendationsList from "./components/admin/recommendation/recommendations-list";
 import ActivitiesList from "./components/admin/activities-list";
 import AdminSignupPage from "./components/admin/signup/admin-signup-page";
 import AdminLoginPage from "./components/admin/login/admin-login-page";
@@ -31,7 +31,7 @@ const App: React.FC = () => {
           <Route path="/users" element={<UsersList />} />
           <Route path="/recommendations" element={<RecommendationsList />} />
           <Route
-            path="/recommendations/:id"
+            path="/recommendations/:recommendationId"
             element={<RecommendationsList />}
           />
           <Route path="/activities" element={<ActivitiesList />} />

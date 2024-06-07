@@ -8,7 +8,7 @@ import HandlePasswordReset from "./password-reset-action";
 const PasswordResetForm: React.FC = () => {
   const [userDetails, setUserDetails] = useState<PasswordResetModel>({
     email: "",
-    newPassword: "",
+    password: "",
     confirm_password: "",
   });
   const [empty, setEmpty] = useState<boolean>(true);
@@ -50,7 +50,7 @@ const PasswordResetForm: React.FC = () => {
         labelClass="text-white"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           CheckEmptyField(e.target, setEmpty);
-          setUserDetails({ ...userDetails, newPassword: e.target.value });
+          setUserDetails({ ...userDetails, password: e.target.value });
         }}
       />
 

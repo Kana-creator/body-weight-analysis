@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Yoga {
 	
 	@Enumerated(EnumType.STRING)
-	private FitnessOptions yogaOptions;
+	private FitnessOptions yogaOption;
 	
 	@Column
     private Integer yogaNumberOfTimes;

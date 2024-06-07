@@ -44,7 +44,7 @@ public class Recommendation {
 	private Integer height;	
 	
 	@Embedded
-	private NutritionRecommendation nutritionRecomendation;	
+	private NutritionRecommendation nutritionRecommendation;	
 	
 	@Embedded
 	private FitnessRecommendation  fitnessRecommendation ;	
@@ -57,7 +57,7 @@ public class Recommendation {
 	private Timestamp lastUpdated;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id", referencedColumnName="userId")
+	@JoinColumn(name="user_id", referencedColumnName="userId", nullable=false)
 	private User user;
 
 }

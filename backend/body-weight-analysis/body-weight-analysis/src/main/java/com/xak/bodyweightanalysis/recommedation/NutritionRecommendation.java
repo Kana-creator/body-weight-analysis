@@ -26,10 +26,10 @@ public class NutritionRecommendation {
 	private NutritionValues carbohydrates;
 	
 	@Enumerated(EnumType.STRING)
-	private NutritionValues Proteins;
+	private NutritionValues proteins;
 	
 	@Enumerated(EnumType.STRING)
-	private NutritionValues Fats;	
+	private NutritionValues fats;	
 	
 	@Embedded
 	private Vitamins vitamins;	
@@ -38,6 +38,6 @@ public class NutritionRecommendation {
 	private Minerals minerals;
 	
 	@Column(length=10000, nullable=true)
-	private String genaralComment;
+	private String generalComment;
 
 }
