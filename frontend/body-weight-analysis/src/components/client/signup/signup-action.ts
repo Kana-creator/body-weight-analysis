@@ -27,7 +27,7 @@ const SignupAction = (
 
   // CONFIRM IF ALL THE REQUIRED FIELDS ARE FILLED
   if (!emptyStatus && !empty) {
-    // CHECK IF PASSWORD MATCK
+    // CHECK IF PASSWORD MATCH
     if (password[0].value.trim() !== password[1].value.trim()) {
       setMessage("Passwords do not match.");
     } else {
@@ -42,8 +42,7 @@ const SignupAction = (
             if (res.data.status && res.data.status !== "OK") {
               setMessage(res.data.message);
             } else {
-              localStorage.setItem("user", JSON.stringify(res.data));
-              window.location.href = "/client";
+              window.location.href = "/";
             }
           } else {
             setMessage("Sign up failed please contact support.");

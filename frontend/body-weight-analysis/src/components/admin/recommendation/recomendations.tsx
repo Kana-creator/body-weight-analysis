@@ -90,12 +90,22 @@ const Recommendations: React.FC<Props> = () => {
                       </span>
                     </p>
                     <p>
-                      <b>Weight: </b>
-                      <span>{recommendation.weight} Kg</span>
+                      <b>Weight Limit: </b>
+                      <span>
+                        {recommendation.weightLowerLimit +
+                          "-" +
+                          recommendation.weightUpperLimit}{" "}
+                        Kg
+                      </span>
                     </p>
                     <p>
-                      <b>Height: </b>
-                      <span>{recommendation.height} cm</span>
+                      <b>Height Limit: </b>
+                      <span>
+                        {recommendation.weightLowerLimit +
+                          "-" +
+                          recommendation.heightUpperLimit}{" "}
+                        cm
+                      </span>
                     </p>
                   </div>
 

@@ -40,15 +40,25 @@ public class RecommendationServiceImplementation implements RecommendationServic
 			throw new BlankFieldException("Please fill all the required fields.");
 		}
 		
-		if(Objects.isNull(recommendation.getWeight()) ||
-				"".equals(recommendation.getWeight())) {
+		if(Objects.isNull(recommendation.getWeightLowerLimit()) ||
+				"".equals(recommendation.getWeightLowerLimit())) {
 			throw new BlankFieldException("Please fill all the required fields.");
 		}
 		
-		if(Objects.isNull(recommendation.getHeight()) ||
-				"".equals(recommendation.getHeight())) {
+		if(Objects.isNull(recommendation.getWeightUpperLimit()) ||
+				"".equals(recommendation.getWeightUpperLimit())) {
 			throw new BlankFieldException("Please fill all the required fields.");
-		}	
+		}
+		
+		if(Objects.isNull(recommendation.getHeightLowerLimit()) ||
+				"".equals(recommendation.getHeightLowerLimit())) {
+			throw new BlankFieldException("Please fill all the required fields.");
+		}
+		
+		if(Objects.isNull(recommendation.getHeightUpperLimit()) ||
+				"".equals(recommendation.getHeightUpperLimit())) {
+			throw new BlankFieldException("Please fill all the required fields.");
+		}
 		
 		
 		//CHECK IF THE RECOMMENDATION IS ALREADY ADDED
@@ -56,15 +66,34 @@ public class RecommendationServiceImplementation implements RecommendationServic
 				recommendationRepository.findDuplicateRecommendation(
 						recommendation.getAgeLowerLimit(), 
 						recommendation.getAgeUpperLimit(),
-						recommendation.getWeight(),
-						recommendation.getHeight());
+						recommendation.getWeightLowerLimit(),
+						recommendation.getWeightUpperLimit(),
+						recommendation.getHeightLowerLimit(),
+						recommendation.getHeightUpperLimit());
 		
 		if(duplicateRecommendation.isPresent()) {
 			throw new AlreadyExistsException(
 					"Recommendation with similar details already added (Age, weight and height)."
-					);	}
+					);	
+			}
 		
 		
+		//CHECK AGE RANGE
+		if(recommendation.getAgeLowerLimit() >= recommendation.getAgeUpperLimit()) {
+			throw new BlankFieldException("Age lower limit can't be greater than or equal to age upper limit.");
+		}
+		
+		//CHECK WEIGHT RANGE
+		if(recommendation.getWeightLowerLimit() >= recommendation.getWeightUpperLimit()) {
+			throw new BlankFieldException("Weight lower limit can't be greater than or equal to weight upper limit.");
+		}
+		
+		//CHECK HEIGHT RANGE
+		if(recommendation.getHeightLowerLimit() >= recommendation.getHeightUpperLimit()) {
+			throw new BlankFieldException("Height lower limit can't be greater than or equal to height upper limit.");
+		}
+		
+		//SAVE RECOMMENDATION IF ALL CONDITIONS ARE FULLFILLED 
 		recommendationRepository.save(recommendation);
 		throw new SuccessMessageException("Recommendation saved successfully.");
 		
@@ -76,6 +105,7 @@ public class RecommendationServiceImplementation implements RecommendationServic
 	 * FETCH A LIST OF RECOMMENDATIONS
 	 */
 	@Override
+	@Transactional
 	public List<Recommendation> fetchRecommendations() throws NotFoundException {
 		List<Recommendation> recommendations = recommendationRepository.findAll();
 		
@@ -92,6 +122,7 @@ public class RecommendationServiceImplementation implements RecommendationServic
 	 * FETCHING A SINGLE RECOMMENDATION BASING ON AGE, WEIGHT AND HEIGHT
 	 */
 	@Override
+	@Transactional
 	public Recommendation fetchSingleRecommendation(
 			Integer age, 
 			Integer weight,
@@ -116,6 +147,7 @@ public class RecommendationServiceImplementation implements RecommendationServic
 	 * DELETE A RECOMMENDATION
 	 */
 	@Override
+	@Transactional
 	public void deleteRecommendation(Long recommendationId) 
 			throws NotFoundException, SuccessMessageException {
 		//CHECK IF THE RECOMMENDATION EXISTS
@@ -137,6 +169,7 @@ public class RecommendationServiceImplementation implements RecommendationServic
 	 * UPDATING A RECOMMENDATION
 	 */
 	@Override
+	@Transactional
 	public void updateRecommendation(Recommendation recommendation, Long recommendationId)
 			throws NotFoundException, AlreadyExistsException, SuccessMessageException {
 		
@@ -147,6 +180,9 @@ public class RecommendationServiceImplementation implements RecommendationServic
 		if(recommendationDB.isEmpty()) {
 			throw new NotFoundException("Recommendation not found.");
 		}
+		
+		
+		// REPLACE THE PROVIDED RECOMMENDATION FIELDS
 		
 		//SAVE RECOMMENDATION IF ALL CONDITIONS ARE FULLFILLED
 		recommendationRepository.save(recommendationDB.get());

@@ -37,7 +37,6 @@ public class NutritionRecommendation {
 	@Embedded
 	private Minerals minerals;
 	
-	@Column(length=10000, nullable=true)
-	private String generalComment;
+	
 
 }

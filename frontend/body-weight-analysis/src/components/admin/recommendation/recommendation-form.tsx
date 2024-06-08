@@ -5,6 +5,7 @@ import CheckEmptySelect from "../../globleActions/check-empty-select";
 import CheckEmptyField from "../../globleActions/check-empty-fields";
 import AddRecommendation from "./add-recommendation";
 import { UserModel } from "../user-model";
+import UpdateRecommendation from "./update-recommendation";
 
 interface Props {
   editableRecom: RecommendationModel[];
@@ -21,8 +22,10 @@ const RecommendationForm: React.FC<Props> = ({
     user: { userId: 1 },
     ageLowerLimit: 0,
     ageUpperLimit: 0,
-    weight: 0,
-    height: 0,
+    weightLowerLimit: 0,
+    weightUpperLimit: 0,
+    heightLowerLimit: 0,
+    heightUpperLimit: 0,
 
     nutritionRecommendation: {
       water: "",
@@ -149,6 +152,7 @@ const RecommendationForm: React.FC<Props> = ({
                   }
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     CheckEmptyField(e.target, setEmpty);
+
                     setRecommendation({
                       ...recommendation,
                       ageUpperLimit: Number(e.target.value),
@@ -161,24 +165,49 @@ const RecommendationForm: React.FC<Props> = ({
 
             <div className="w-1/3 flex flex-wrap  items-center py-1">
               <label className="w-full p-2">
-                <b>Weight*</b>
+                <b>Weight limit*</b>
               </label>
               <input
                 type="number"
                 className="w-full"
                 placeholder="Weight in kg"
                 id="weight"
-                defaultValue={recommendationId ? editableRecom[0].weight : ""}
+                defaultValue={
+                  recommendationId ? editableRecom[0].weightLowerLimit : ""
+                }
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   CheckEmptyField(e.target, setEmpty);
                   setRecommendation({
                     ...recommendation,
-                    weight: Number(e.target.value),
+                    weightLowerLimit: Number(e.target.value),
                   });
                 }}
               />
               <small className="w-full text-red-500 text-sm">.</small>
             </div>
+            <h1 className="w-1/5 text-center">
+              <b> To </b>
+            </h1>
+            <div className="w-1/3">
+              <input
+                type="number"
+                className="w-full"
+                placeholder="Weight in kg"
+                id="weight"
+                defaultValue={
+                  recommendationId ? editableRecom[0].weightUpperLimit : ""
+                }
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  CheckEmptyField(e.target, setEmpty);
+                  setRecommendation({
+                    ...recommendation,
+                    weightUpperLimit: Number(e.target.value),
+                  });
+                }}
+              />
+              <small className="w-full text-red-500 text-sm">.</small>
+            </div>
+
             <div className="w-1/3 flex flex-wrap items-center py-1">
               <label className="w-full p-2">
                 <b>Height*</b>
@@ -188,12 +217,36 @@ const RecommendationForm: React.FC<Props> = ({
                 className="w-full"
                 placeholder="Height in cm"
                 id="height"
-                defaultValue={recommendationId ? editableRecom[0].height : ""}
+                defaultValue={
+                  recommendationId ? editableRecom[0].heightLowerLimit : ""
+                }
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   CheckEmptyField(e.target, setEmpty);
                   setRecommendation({
                     ...recommendation,
-                    height: Number(e.target.value),
+                    heightLowerLimit: Number(e.target.value),
+                  });
+                }}
+              />
+              <small className="w-full text-red-500 text-sm">.</small>
+            </div>
+            <h1 className="w-1/5 text-center">
+              <b> To </b>
+            </h1>
+            <div className="w-1/3">
+              <input
+                type="Number"
+                className="w-full"
+                placeholder="Height in cm"
+                id="height"
+                defaultValue={
+                  recommendationId ? editableRecom[0].heightUpperLimit : ""
+                }
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  CheckEmptyField(e.target, setEmpty);
+                  setRecommendation({
+                    ...recommendation,
+                    heightUpperLimit: Number(e.target.value),
                   });
                 }}
               />
@@ -1229,6 +1282,12 @@ const RecommendationForm: React.FC<Props> = ({
                 defaultValue={
                   !recommendationId ? "" : editableRecom[0].generalComment
                 }
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                  setRecommendation({
+                    ...recommendation,
+                    generalComment: e.target.value,
+                  })
+                }
               ></textarea>
             </div>
             <div className="w-full flex flex-wrap justify-center py-10">
@@ -1300,7 +1359,17 @@ const RecommendationForm: React.FC<Props> = ({
                   Save
                 </button>
               ) : (
-                <button className="p-2 rounded-sm bg-blue-700 text-white mx-2 w-32 text-xl">
+                <button
+                  className="p-2 rounded-sm bg-blue-700 text-white mx-2 w-32 text-xl"
+                  onClick={() =>
+                    UpdateRecommendation(
+                      recommendationId,
+                      recommendation,
+                      setMessage,
+                      setShowForm
+                    )
+                  }
+                >
                   Update
                 </button>
               )}

@@ -3,8 +3,10 @@ export interface RecommendationModel {
   user: { userId: number };
   ageLowerLimit: number;
   ageUpperLimit: number;
-  weight: number;
-  height: number;
+  weightLowerLimit: number;
+  weightUpperLimit: number;
+  heightLowerLimit: number;
+  heightUpperLimit: number;
 
   nutritionRecommendation: {
     water: string;

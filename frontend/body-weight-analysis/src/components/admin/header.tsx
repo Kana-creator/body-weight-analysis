@@ -29,7 +29,7 @@ const Header: React.FC<Props> = () => {
       <div className="">
         <h1>info@bodyweightanalysis.com / 08002839382</h1>
       </div>
-      <div className="">
+      <div className="cursor-pointer hover:bg-red-800">
         <details className="px-3 py-1 min-w-32">
           <summary>
             <span>{currentUser?.firstName}</span>

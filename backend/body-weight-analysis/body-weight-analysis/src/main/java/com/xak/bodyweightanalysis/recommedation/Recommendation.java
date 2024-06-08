@@ -38,16 +38,25 @@ public class Recommendation {
 	private Integer ageUpperLimit;
 	
 	@Column(nullable=false)
-	private Integer weight;
+	private Integer weightLowerLimit;
 	
 	@Column(nullable=false)
-	private Integer height;	
+	private Integer weightUpperLimit;
+	
+	@Column(nullable=false)
+	private Integer heightLowerLimit;
+	
+	@Column(nullable=false)
+	private Integer heightUpperLimit;
 	
 	@Embedded
 	private NutritionRecommendation nutritionRecommendation;	
 	
 	@Embedded
-	private FitnessRecommendation  fitnessRecommendation ;	
+	private FitnessRecommendation  fitnessRecommendation ;
+	
+	@Column(length=10000, nullable=true)
+	private String generalComment;
 	
 	@CreationTimestamp
 	@Column(updatable=false)
