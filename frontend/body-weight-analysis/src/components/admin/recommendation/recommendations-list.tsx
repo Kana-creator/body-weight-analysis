@@ -12,10 +12,10 @@ const RecommendationsList: React.FC<Props> = () => {
 
   useEffect(() => {
     setLinks([
-      { label: "Dashboard", link: "/dashboard", active: false },
+      // { label: "Dashboard", link: "/dashboard", active: false },
       { label: "Users", link: "/users", active: false },
       { label: "Recommendations", link: "/recommendations", active: true },
-      { label: "Activities", link: "/activities", active: false },
+      // { label: "Activities", link: "/activities", active: false },
     ]);
   }, []);
 

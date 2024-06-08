@@ -37,7 +37,7 @@ const LoginAction = (
             setMessage(res.data.message);
           } else {
             localStorage.setItem("user", JSON.stringify(res.data));
-            navigate("/dashboard");
+            navigate("/users");
           }
         } else {
           setMessage("Login failed please contact support.");

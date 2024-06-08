@@ -42,10 +42,9 @@ public class UserServiceImplementation implements UserService {
 					+ "' already taken.");			
 		}		
 		
-		//CHECK ID ADMIN USER ALREADY ADDED
-		Optional<User> adminUser = userRepository.findByRole(user.getRole());
-		System.out.println(user.getRole());
-		if(adminUser.isPresent() && user.getRole() == UserRole.admin) {
+		//CHECK IF ADMIN USER ALREADY ADDED
+		List<User> adminUser = userRepository.findByRole(user.getRole());		
+		if(!adminUser.isEmpty() && user.getRole() == UserRole.admin) {
 			throw new AlreadyExistsException("Admin account already created");
 		}		
 		
